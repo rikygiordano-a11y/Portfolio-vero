@@ -1,0 +1,403 @@
+$bg: #0f1115;
+$card: #171a21;
+$text: #e9eef6;
+$muted: #aab4c5;
+$border: rgba(255,255,255,.12);
+$primary: #ffd54a;
+
+$radius: 14px;
+$shadow: 0 10px 30px rgba(0,0,0,.35);
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: $bg;
+  color: $text;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+.container { width: min(1100px, 92%); margin: 0 auto; }
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 10px;
+  background: $primary;
+  color: #111;
+  padding: 8px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  &:focus { left: 10px; }
+}
+
+.section { padding: 56px 0; }
+.section-alt { background: rgba(255,255,255,.03); }
+
+.section-head {
+  margin-bottom: 18px;
+  h1, h2 { margin: 0 0 6px; }
+}
+
+.muted { color: $muted; }
+.small { font-size: .92rem; }
+
+.card {
+  background: $card;
+  border: 1px solid $border;
+  border-radius: $radius;
+  padding: 18px;
+  box-shadow: $shadow;
+}
+
+/* ===========================
+   HEADER / NAV
+   Sticky SOLO su mobile (REQUISITO)
+=========================== */
+.site-header {
+  border-bottom: 1px solid $border;
+  background: rgba(15,17,21,.85);
+  backdrop-filter: blur(10px);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.logo { text-decoration: none; color: $text; }
+.logo-badge {
+  display: inline-flex;
+  width: 44px; height: 44px;
+  align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 1px solid $border;
+  background: rgba(255,255,255,.05);
+  font-weight: 700;
+}
+
+.nav {
+  display: flex;
+  gap: 14px;
+}
+
+.nav-link {
+  color: $muted;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 10px;
+  &:hover { background: rgba(255,255,255,.06); color: $text; }
+}
+.is-active { color: $text; background: rgba(255,255,255,.06); }
+
+/* Sticky solo mobile */
+@media (max-width: 768px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+}
+
+/* ===========================
+   BUTTONS (custom, senza JS)
+=========================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.btn-primary-custom {
+  background: $primary;
+  color: #111;
+  border-color: $primary;
+  &:hover { filter: brightness(.95); }
+}
+
+.btn-outline-custom {
+  background: transparent;
+  color: $text;
+  border-color: $border;
+  &:hover { background: rgba(255,255,255,.06); }
+}
+
+/* ===========================
+   HERO (GRID)
+=========================== */
+.hero { padding: 44px 0 18px; }
+
+.hero-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1.2fr .8fr;
+  align-items: start;
+}
+
+.eyebrow {
+  color: $muted;
+  margin: 0 0 6px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: .85rem;
+}
+
+h1 { margin: 0 0 10px; font-size: clamp(2rem, 5vw, 3rem); }
+
+.lead { color: $muted; font-size: 1.05rem; margin: 0 0 14px; }
+
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+
+.hero-card { @extend .card; }
+.mini-stats {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.mini-stat {
+  border: 1px solid $border;
+  border-radius: 12px;
+  padding: 10px;
+  background: rgba(255,255,255,.03);
+}
+.mini-title { display:block; color: $muted; font-size: .85rem; }
+.mini-value { display:block; margin-top: 4px; font-weight: 700; }
+
+.chips { list-style: none; padding: 0; margin: 0; display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  border: 1px solid $border;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: $muted;
+  background: rgba(255,255,255,.03);
+}
+
+/* ===========================
+   PROGETTI (GRID)
+=========================== */
+.grid-cards {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.project {
+  @extend .card;
+  h3 { margin-top: 0; }
+}
+
+.list { margin: 10px 0 0; color: $muted; }
+.project-actions { margin-top: 12px; display:flex; gap: 12px; }
+.link {
+  color: $primary;
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}
+
+/* ===========================
+   TIMELINE (FLEX)
+=========================== */
+.timeline { display: flex; flex-direction: column; gap: 12px; }
+.step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px;
+  border: 1px solid $border;
+  border-radius: $radius;
+  background: rgba(255,255,255,.03);
+}
+.dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: $primary;
+  margin-top: 6px;
+}
+
+.cta {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* ===========================
+   CV
+=========================== */
+.cv-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 320px 1fr;
+  align-items: start;
+}
+
+.cv-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid $border;
+  margin-bottom: 12px;
+}
+
+.divider { border: 0; border-top: 1px solid $border; margin: 14px 0; }
+
+.plain { list-style: none; padding: 0; margin: 0; color: $muted; }
+.plain li { margin-bottom: 8px; }
+
+.skills { margin: 10px 0 0; color: $muted; }
+.cv-actions { margin-top: 12px; display:flex; gap: 10px; flex-wrap: wrap; }
+
+/* ===========================
+   CONTATTI
+=========================== */
+.contact-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1.2fr .8fr;
+}
+
+.form { margin-top: 10px; }
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+label { font-weight: 600; }
+
+input, textarea {
+  border: 1px solid $border;
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,.03);
+  color: $text;
+  outline: none;
+  &:focus { border-color: rgba(255,213,74,.55); }
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+.site-footer {
+  border-top: 1px solid $border;
+  padding: 18px 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: $muted;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 992px) {
+  .grid-cards { grid-template-columns: repeat(2, 1fr); }
+  .hero-grid { grid-template-columns: 1fr; }
+  .cv-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+  .grid-cards { grid-template-columns: 1fr; }
+  .mini-stats { grid-template-columns: 1fr; }
+  .cta { flex-direction: column; align-items: flex-start; }
+}
+p,
+li,
+.card p,
+.project p,
+.project li,
+.cv-main p,
+.cv-main li {
+  color: #ffffff;
+}
+
+.muted {
+  color: $muted !important;
+}
+body,
+p,
+li,
+span,
+small,
+label,
+strong {
+  color: #ffffff;
+}
+
+/* Titoli */
+h1, h2, h3, h4, h5 {
+  color: #ffffff;
+}
+
+/* Testi secondari */
+.muted {
+  color: #cfd6e0 !important;
+}
+
+/* Card (CV + Contatti) */
+.card,
+.card p,
+.card li {
+  color: #ffffff;
+}
+
+/* =========================
+   FORM (CONTATTI)
+========================= */
+
+/* Label */
+form label {
+  color: #ffffff;
+}
+
+/* Input e textarea */
+input,
+textarea {
+  color: #ffffff;
+  background-color: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* Placeholder (TESTO DENTRO I CAMPI) */
+input::placeholder,
+textarea::placeholder {
+  color: #cfd6e0;
+  opacity: 1;
+}
+
+/* Focus */
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #ffd54a;
+}
+
+/* =========================
+   LINK (CV + CONTATTI)
+========================= */
+a {
+  color: #ffd54a;
+}
+
+a:hover {
+  opacity: 0.85;
+}
+.chips { gap: 10px; margin-top: 12px; }
+.chip {
+  padding: 7px 12px;
+  font-size: .92rem;
+  border-color: rgba(255,255,255,.18);
+}
